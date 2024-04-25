@@ -1,35 +1,26 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useState } from 'react';
+import { BaseColaboradores } from './components/BaseColaboradores';
+import Listado from './components/Listado';
+import Formulario from './components/Formulario';
+import Buscador from './components/Buscador';
+import Alert from './components/Alert';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [colaboradores, setColaboradores] = useState(BaseColaboradores);
+  const [mensaje, setMensaje] = useState(null);
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+
+    <div className="App">
+      <div className='Header'>
+        <h1>Lista de Colaboradores</h1>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+      <Alert mensaje={mensaje} />
+      <Formulario setColaboradores={setColaboradores} setMensaje={setMensaje} />
+      <Buscador colaboradores={colaboradores} />
+      <Listado colaboradores={colaboradores} setColaboradores={setColaboradores} />
+    </div>
+  );
 }
 
-export default App
+export default App;
