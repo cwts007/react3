@@ -1,15 +1,11 @@
 import React from 'react';
+import { Table, Button } from 'react-bootstrap';
 
-function Listado({ colaboradores, setColaboradores }) {
-    const eliminarColaborador = (id) => {
-        setColaboradores(colaboradores.filter((colaborador) => colaborador.id !== id));
-    };
-
+const Listado = ({ colaboradores, onEliminarColaborador }) => {
     return (
-        <table className="table">
+        <Table striped bordered hover>
             <thead>
                 <tr>
-                    <th>ID</th>
                     <th>Nombre</th>
                     <th>Correo</th>
                     <th>Edad</th>
@@ -19,22 +15,26 @@ function Listado({ colaboradores, setColaboradores }) {
                 </tr>
             </thead>
             <tbody>
-                {colaboradores.map((colaborador) => (
+                {colaboradores.map(colaborador => (
                     <tr key={colaborador.id}>
-                        <td>{colaborador.id}</td>
                         <td>{colaborador.nombre}</td>
                         <td>{colaborador.correo}</td>
                         <td>{colaborador.edad}</td>
                         <td>{colaborador.cargo}</td>
                         <td>{colaborador.telefono}</td>
                         <td>
-                            <button onClick={() => eliminarColaborador(colaborador.id)}>Eliminar</button>
+                            <Button
+                                variant="danger"
+                                onClick={() => onEliminarColaborador(colaborador.id)}
+                            >
+                                Eliminar
+                            </Button>
                         </td>
                     </tr>
                 ))}
             </tbody>
-        </table>
+        </Table>
     );
-}
+};
 
 export default Listado;

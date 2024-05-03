@@ -1,11 +1,12 @@
 import React from 'react';
+import { Alert as BootstrapAlert } from 'react-bootstrap';
 
-function Alert({ mensaje }) {
+const Alert = ({ mensaje, tipo }) => {
   return (
-    <div className={`alert alert-${mensaje ? mensaje.type : "secondary"}`}>
-      {mensaje ? mensaje.text : ""}
-    </div>
+    <BootstrapAlert variant={tipo}>
+      {mensaje}
+    </BootstrapAlert>
   );
-}
+};
 
 export default Alert;

@@ -1,39 +1,17 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { Form } from 'react-bootstrap';
 
-function Buscador({ colaboradores }) {
-    const [terminoBusqueda, setTerminoBusqueda] = useState("");
-    const [resultadosBusqueda, setResultadosBusqueda] = useState([]);
-
-    const handleChange = (e) => {
-        setTerminoBusqueda(e.target.value);
-    };
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        if (terminoBusqueda === "") {
-            setResultadosBusqueda([]);
-        } else {
-            setResultadosBusqueda(colaboradores.filter((colaborador) => Object.values(colaborador).join(" ").toLowerCase().includes(terminoBusqueda.toLowerCase())));
-        }
-    };
-
+const Buscador = ({ filtro, onFiltroChange }) => {
     return (
-        <div>
-            <form onSubmit={handleSubmit}>
-                <input type="text" value={terminoBusqueda} onChange={handleChange} placeholder="Buscar colaborador" />
-                <button type="submit">Buscar</button>
-            </form>
-            {resultadosBusqueda.map((colaborador) => (
-                <div key={colaborador.id}>
-                    <p>{colaborador.nombre}</p>
-                    <p>{colaborador.correo}</p>
-                    <p>{colaborador.edad}</p>
-                    <p>{colaborador.cargo}</p>
-                    <p>{colaborador.telefono}</p>
-                </div>
-            ))}
-        </div>
+        <Form.Group controlId="filtro">
+            <Form.Control
+                type="text"
+                placeholder="Buscar colaborador..."
+                value={filtro}
+                onChange={e => onFiltroChange(e.target.value)}
+            />
+        </Form.Group>
     );
-}
+};
 
 export default Buscador;
