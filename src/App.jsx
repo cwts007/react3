@@ -5,6 +5,7 @@ import Formulario from './components/Formulario';
 import Buscador from './components/Buscador';
 import Alert from './components/Alert';
 import { BaseColaboradores } from './BaseColaboradores';
+import Footer from './components/Footer';
 
 const App = () => {
   const [colaboradores, setColaboradores] = useState(BaseColaboradores);
@@ -63,7 +64,9 @@ const App = () => {
           </Col>
         </Row>
       )}
+      <Footer />
     </Container>
+
   );
 };
 

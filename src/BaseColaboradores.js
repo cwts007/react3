@@ -23,4 +23,12 @@ export const BaseColaboradores = [
         cargo: "Ingeniero DevOps",
         telefono: "99226644"
     },
+    {
+        id: "4",
+        nombre: "Christopher Thompson",
+        correo: "cwts007@gmail.com",
+        edad: "41",
+        cargo: "Ingeniero Civil Industrial",
+        telefono: "+56950009582"
+    },
 ];
